@@ -1,4 +1,4 @@
-// data/mock.js
+
 const cards = [
   { id: "c1", title: "React Community", subtitle: "Frontend devs", stats: { members: 120, desc: "A place to learn React." } },
   { id: "c2", title: "Next.js Guides", subtitle: "SSR & SSG", stats: { members: 80, desc: "Discussing Next.js patterns." } },

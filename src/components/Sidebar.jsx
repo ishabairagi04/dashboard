@@ -1,5 +1,5 @@
 import React from "react";
-// Import icons from a library like lucide-react (you'll need to install this package)
+
 import { 
     BarChart3, ShoppingCart, NotebookText, MessageCircle, 
     Settings, Wallet, User, Info 
@@ -39,7 +39,7 @@ export default function Sidebar() {
      
       <nav className="flex-1 px-4 space-y-6">
         
-        {/* Menu Section */}
+        
         <div>
           <div className="mb-4 ml-4 text-xs font-semibold uppercase text-gray-500">
             MENU
@@ -51,7 +51,7 @@ export default function Sidebar() {
           </ul>
         </div>
 
-        {/* Others Section */}
+        
         <div>
           <div className="mb-4 ml-4 text-xs font-semibold uppercase text-gray-500">
             OTHERS

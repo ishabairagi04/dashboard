@@ -1,10 +1,7 @@
-import React, { useState, useMemo } from "react"; // Added useMemo for efficient filtering
+import React, { useState, useMemo } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-// --- Panel Components (Integrated Logic - Kept as is) ---
-
-// Helper component for the View Report button
 const ViewReportButton = () => (
   <button className="text-sm text-indigo-500 font-medium hover:text-indigo-700">
     View Report
@@ -12,7 +9,6 @@ const ViewReportButton = () => (
 );
 
 const RevenuePanel = () => (
-  // Subtle shadow, smaller radius, white background
   <div className="bg-white p-6 rounded-lg shadow-sm">
     <div className="flex justify-between items-start">
       <div>
@@ -27,7 +23,6 @@ const RevenuePanel = () => (
       <ViewReportButton />
     </div>
 
-    {/* Placeholder for the Bar Chart */}
     <div className="h-40 mt-6 flex items-end justify-between space-x-2 px-1">
       {[50, 65, 40, 80, 45, 95, 30, 70, 55, 90, 85, 60].map((height, i) => (
         <div key={i} className="flex flex-col items-center w-1/12">
@@ -58,7 +53,6 @@ const OrderTimePanel = () => (
     </div>
     <p className="text-sm text-gray-500">From 1-6 Dec, 2020</p>
 
-    {/* Placeholder for the Donut Chart */}
     <div className="relative flex items-center justify-center h-52 mt-4">
       <div className="w-40 h-40 rounded-full relative">
         <div className="absolute inset-0 rounded-full" 
@@ -78,7 +72,6 @@ const OrderTimePanel = () => (
       </div>
     </div>
 
-    {/* Legend */}
     <div className="flex justify-center space-x-6 mt-2 text-xs">
       <div className="flex items-center">
         <div className="w-2.5 h-2.5 rounded-full bg-indigo-600 mr-1" />
@@ -104,14 +97,12 @@ const RatingPanel = () => (
     <h2 className="text-lg font-semibold text-gray-800 mb-1">Your Rating</h2>
     <p className="text-sm text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur</p>
 
-    {/* Placeholder for the Rating Chart - Meticulously positioning the circles */}
     <div className="relative h-48 flex items-center justify-center">
       
-      {/* 1. Food Taste (Orange) - Main Circle */}
       <div className="absolute w-36 h-36 rounded-full bg-orange-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-90"
           style={{ 
-            background: "conic-gradient(#F97316 0% 85%, #FDE68A 85% 100%)", // Orange/Yellow
-            boxShadow: "0 0 0 16px rgba(253, 230, 138, 0.4)" // Fake shadow for the white ring
+            background: "conic-gradient(#F97316 0% 85%, #FDE68A 85% 100%)",
+            boxShadow: "0 0 0 16px rgba(253, 230, 138, 0.4)"
           }}
       >
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
@@ -120,11 +111,10 @@ const RatingPanel = () => (
         </div>
       </div>
 
-      {/* 2. Hygiene (Purple) - Top Left */}
       <div className="absolute w-28 h-28 rounded-full top-[10%] left-[10%] opacity-90"
            style={{ 
-             background: "conic-gradient(#8B5CF6 0% 85%, #E5E0FF 85% 100%)", // Purple/Lavender
-             boxShadow: "0 0 0 12px rgba(234, 226, 255, 0.6)" // Fake shadow for the white ring
+             background: "conic-gradient(#8B5CF6 0% 85%, #E5E0FF 85% 100%)",
+             boxShadow: "0 0 0 12px rgba(234, 226, 255, 0.6)"
            }}
       >
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
@@ -133,11 +123,10 @@ const RatingPanel = () => (
         </div>
       </div>
       
-      {/* 3. Packaging (Cyan) - Bottom Left */}
       <div className="absolute w-32 h-32 rounded-full bottom-[10%] left-[0%] opacity-90"
            style={{ 
-             background: "conic-gradient(#22D3EE 0% 92%, #CCFBF1 92% 100%)", // Cyan/Light Cyan
-             boxShadow: "0 0 0 14px rgba(204, 251, 241, 0.5)" // Fake shadow for the white ring
+             background: "conic-gradient(#22D3EE 0% 92%, #CCFBF1 92% 100%)",
+             boxShadow: "0 0 0 14px rgba(204, 251, 241, 0.5)"
            }}
       >
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
@@ -166,7 +155,6 @@ const MostOrderedPanel = () => {
         {foodItems.map((item, index) => (
           <li key={index} className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              {/* Food Image Placeholder - using colored circles as in the design */}
               <div className={`w-9 h-9 rounded-full ${item.color}`} />
               <span className="text-sm font-medium text-gray-700">{item.name}</span>
             </div>
@@ -193,31 +181,28 @@ const OrderPanel = () => (
       <ViewReportButton />
     </div>
 
-    {/* Placeholder for the Line Chart (using SVG for visual accuracy) */}
     <div className="h-40 mt-4 relative">
       <svg
         viewBox="0 0 100 80"
         className="absolute inset-0 w-full h-full"
         preserveAspectRatio="none"
       >
-        {/* Blue Line (Last 6 days) */}
         <polyline
           fill="none"
-          stroke="#4C51BF" // Indigo
+          stroke="#4C51BF"
           strokeWidth="2"
-          points="0,65 20,40 40,50 60,30 80,60 100,20" // Adjusted points to match the graph shape
+          points="0,65 20,40 40,50 60,30 80,60 100,20"
         />
-        {/* Gray Line (Last Week) */}
         <polyline
           fill="none"
-          stroke="#A0AEC0" // Gray
+          stroke="#A0AEC0"
           strokeWidth="2"
-          points="0,35 20,55 40,25 60,70 80,45 100,50" // Adjusted points to match the graph shape
+          points="0,35 20,55 40,25 60,70 80,45 100,50"
         />
       </svg>
     </div>
 
-    {/* X-axis labels */}
+    
     <div className="mt-4 flex justify-between text-xs text-gray-500">
       {["01", "02", "03", "04", "05", "06"].map((day, i) => (
         <span key={i} className="w-1/6 text-center">{day}</span>
@@ -236,8 +221,6 @@ const OrderPanel = () => (
 );
 
 
-// --- Dashboard Panel Metadata for Filtering ---
-// Define all panel data, including keywords for better search results.
 const dashboardPanels = [
   { 
     id: "revenue", 
@@ -277,21 +260,20 @@ const dashboardPanels = [
 ];
 
 
-// --- Main Dashboard Component ---
 export default function Dashboard() {
-  // query state is already defined and passed to the Header
+  
   const [query, setQuery] = useState("");
 
-  // Filter the panels based on the search query
+  
   const filteredPanels = useMemo(() => {
-    // If the query is empty or just whitespace, return all panels
+  
     if (!query.trim()) return dashboardPanels;
     
     const q = query.toLowerCase();
     
     return dashboardPanels.filter(
       (panel) =>
-        // Check if the query matches the panel title OR keywords
+        
         panel.title.toLowerCase().includes(q) ||
         panel.keywords.toLowerCase().includes(q)
     );
@@ -300,7 +282,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50"> 
-      {/* Header handles the search input and updates the 'query' state */}
+      
       <Header query={query} setQuery={setQuery} /> 
       
       <div className="flex">
@@ -309,7 +291,7 @@ export default function Dashboard() {
         <main className="flex-1 p-8">
           <h1 className="text-2xl font-semibold text-gray-800 mb-6">
             Dashboard
-            {/* Display the number of results if a search is active */}
+            
             {query.trim() && (
                 <span className="text-gray-500 text-base font-normal ml-4">
                     ({filteredPanels.length} results)
@@ -319,15 +301,15 @@ export default function Dashboard() {
           
           <div className="grid grid-cols-12 gap-6">
             
-            {/* Render ONLY the panels that match the filter */}
+            
             {filteredPanels.map((panel) => (
               <div key={panel.id} className={panel.col}>
-                {/* Dynamically render the panel component using the component property */}
+              
                 <panel.component /> 
               </div>
             ))}
             
-            {/* Show a message if no panels match the search query */}
+            
             {filteredPanels.length === 0 && query.trim() && (
                 <div className="col-span-12 p-8 text-center text-gray-500 bg-white rounded-lg shadow-sm">
                     No dashboard panels match your search for "{query}".
